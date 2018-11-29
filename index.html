@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>IntelligWeb</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js'></script>
+    
+    
+    <!-- favicons -- fonts
+    ================================================== -->
+    <link rel="icon" href="images/icons/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400i,500i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch:400i" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.4.7/dist/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- TypeWriter
+    ================================================== -->
+    <script>
+        var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+    </script>
+
+</head>
+
+
+<body id="top">
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-jump">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <div class="header-logo">
+            <a class="site-logo" href="index.html">
+                <img src="images/logopb.png" alt="Homepage">
+            </a>
+        </div> <!-- end header-logo -->
+
+        <nav class="header-nav">
+
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+            <h3>Menu</h3>
+
+            <div class="header-nav__content">
+
+                <ul class="header-nav__list">
+                    <li><a class="smoothscroll" href="#home" title="home">Home</a></li>
+                    <li><a href="shop/shop.php">Shop</a></li>
+                    <li><a class="smoothscroll" href="#services" title="services">Serviços</a></li>
+                    <li><a class="smoothscroll" href="#clients" title="clients">Fabricantes</a></li>
+                    <li><a href="system/login.php" title="">Login</a></li>
+                    <li><a class="smoothscroll" href="#contact" title="contact">Contato</a></li>
+                </ul>
+
+                <p></p>
+
+                <ul class="header-nav__social">
+                    <li>
+                        <a href="#0"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-dribbble"></i></a>
+                    </li>
+                </ul>
+
+            </div> <!-- end header-nav__content -->
+
+        </nav> <!-- end header-nav -->
+
+        <a class="header-menu-toggle" href="#0">
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+
+
+    <!-- home
+    ================================================== -->
+    <section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="images/hero-bg.jpg"
+        data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+
+        <div class="grid-overlay">
+            <div></div>
+        </div>
+
+        <div class="home-content">
+
+            <div class="row home-content__main">
+                <h1 class="animated fadeInDown delay-1s">
+                    Business<strong style="font-size: 1.3em;">Intellig</strong>
+                </h1>
+
+                <h3 class="animated fadeInRight slow">
+                    Criando experiências e mostrando que o futuro começa agora!
+                </h3>
+                
+                <h3>
+                    <a style="font-family: 'Chakra Petch', sans-serif;" href="" class="typewrite" data-period="2000" data-type='[ "O futuro está...", "mais próximo do que você...", " pode imaginar!"]'>
+                      <span class="wrap"></span>
+                    </a>
+                </h3>
+
+                <div class="home-content__video">
+                    <a class="video-link" href="https://player.vimeo.com/video/75847801" data-lity>
+                        <span class="video-icon"></span>
+                        <span class="video-text">Watch Video</span>
+                    </a>
+                </div>
+
+                <div class="home-content__button">
+                    <a href="shop/shop.php" id="about" class="btn btn--primary btn--large">
+                            <div style="position: absolute; top: 9%; left: 20%"><i class="material-icons md-36">shopping_cart</i></div> Shop Now
+                    </a>
+                    <a href="#contact" class="smoothscroll btn btn--large">
+                        Entre em contato
+                    </a>
+                </div>
+
+            </div> <!-- end home-content__main -->
+
+            <div class="home-content__scroll">
+                <a href="#about" class="scroll-link smoothscroll">
+                    Scroll
+                </a>
+            </div>
+
+        </div> <!-- end home-content -->
+
+        <ul class="home-social">
+            <li>
+                <a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i><span>Facebook</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fab fa-behance" aria-hidden="true"></i><span>Behance</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
+            </li>
+        </ul> <!-- end home-social -->
+
+    </section> <!-- end s-home -->
+
+
+    <!-- about
+    ================================================== -->
+    <section id="about" class="s-about target-section">
+
+        <div class="row section-header bit-narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Quem somos</h3>
+                <h1 class="display-1">
+                    Nós somos a Intellig, empresa especializada em sistemas web e automação residencial...
+                </h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row bit-narrow" data-aos="fade-up">
+            <div class="col-full">
+                <p class="lead">
+                    Apresentamos as últimas inovações preocupando-se com a usabilidade, sustentabilidade e
+                    acessibilidade - casa <a><strong>Intellig</strong>ente</a>.
+                    Planejamento de uma smart home amplia suas possibilidades de inovação em seus projetos
+                    arquitetônicos!
+                </p>
+            </div>
+        </div> <!-- end about-desc -->
+
+        <div class="row bit-narrow">
+
+            <div class="about-process process block-1-2 block-tab-full">
+
+                <div class="col-block item-process" data-aos="fade-up">
+                    <div class="item-process__text">
+                        <h4 class="item-title">Equipamentos</h4>
+                        <p style="text-align: justify;">
+                            Possibilidade de controlar diversos equipamentos de dentro de sua casa como lâmpadas,
+                            termostatos, cortinas e vários outros equipamentos de qualquer lugar, a partir de um
+                            smartphone ou até mesmo smart watch.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block item-process" data-aos="fade-up">
+                    <div class="item-process__text">
+                        <h4 class="item-title">Projetos</h4>
+                        <p style="text-align: justify;">
+                            As casas inteligentes estão alinhadas as melhores práticas em construção, proporcionando
+                            consumo limpo e comodidade ao usuário.
+                            Estes são apenas alguns dos motivos, que no final das contas, aumentarão o valor do projeto
+                            arquitetônico.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block item-process" data-aos="fade-up">
+                    <div class="item-process__text">
+                        <h4 class="item-title">Sistemas</h4>
+                        <p style="text-align: justify;">
+                            Sistema Web para controlar suas finanças pessoais ou de sua empresa de qualquer lugar e com
+                            recurso responsivo, podendo acessar de seu smartphone.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block item-process" data-aos="fade-up">
+                    <div class="item-process__text">
+                        <h4 class="item-title">Serviços</h4>
+                        <p style="text-align: justify;">
+                            Contando com uma equipe altamente capacitada e com larga experiência, aptos a atender uma
+                            ampla variedade de produtos e serviços.
+                        </p>
+                    </div>
+                </div>
+
+            </div> <!-- end process -->
+
+        </div> <!-- end row -->
+
+    </section> <!-- end s-about -->
+
+
+    <!-- services
+    ================================================== -->
+    <section id='services' class="s-services target-section darker">
+
+        <div class="row section-header bit-narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">O que fazemos</h3>
+                <h1 class="display-1">
+                    Serviços projetados para ambientes inovadores e aconchegantes em sua casa.
+                </h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row bit-narrow services block-1-2 block-tab-full">
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon">
+                    <i class="icon-star"></i>
+                </div>
+                <div class="item-service__text">
+                    <h3 class="item-title">Melhores fabricantes</h3>
+                    <p>Interruptores, ar-condicionado, geladeira conectada à internet.
+                        São várias as possibilidades de quem quer deixar a casa prática e tecnológica.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon">
+                    <i class="icon-group"></i>
+                </div>
+                <div class="item-service__text">
+                    <h3 class="item-title">Inovação</h3>
+                    <p>Internet das Coisas (ou Iot, do inglês, Internet of Things) está rapidamente conquistando o
+                        mercado, já que muitas casas
+                        estão sendo equipadas com dispositivos sofisticados e tecnologias destinadas a fornecer aos
+                        proprietários conforto, personalização e conectividade.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon">
+                    <i class="icon-pie-chart"></i>
+                </div>
+                <div class="item-service__text">
+                    <h3 class="item-title">Mercado</h3>
+                    <p>Um número crescente de casas conta com sistemas concebidos para tornar a vida mais fácil e
+                        confortável, graças à Internet das Coisas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon">
+                    <i class="icon-image"></i>
+                </div>
+                <div class="item-service__text">
+                    <h3 class="item-title">Qualidade de vida</h3>
+                    <p>Seu princípio fundamental é a melhoria da qualidade de vida, através de soluções que forneçam
+                        saúde,
+                        segurança e autonomia para o bem-estar destes usuários.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon">
+                    <i class="icon-cube"></i>
+                </div>
+                <div class="item-service__text">
+                    <h3 class="item-title">Segurança</h3>
+                    <p>Saiba o que se passa dentro e fora de sua casa com a câmera de vídeo HD e sensores de intrusão.
+                        Em caso de intrusão, as sirenes interiores/exteriores
+                        disparam sinais sonoros e, serão enviados alertas em tempo real via app, email e SMS/chamada de
+                        voz para o seu smartphone, tablet e PC.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon"><i class="icon-lego-block"></i></div>
+                <div class="item-service__text">
+                    <h3 class="item-title">Casa</h3>
+                    <p>Temos nossa rotina bem definida: Escolha de fabricantes e materiais que se adequarão com
+                        harmonia a seu projeto tanto funcionalmente
+                        como esteticamente.
+                    </p>
+                </div>
+            </div>
+
+        </div> <!-- end services -->
+
+    </section> <!-- end s-services -->
+
+
+    <!-- works
+    ================================================== -->
+    <section id="works" class="s-works target-section">
+
+        <div class="row section-header has-bottom-sep narrow target-section" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Nosso trabalho</h3>
+                <h1 class="display-1">
+                    Nós criamos ambientes e experiências únicas que nossos clientes amam.
+                </h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row masonry-wrap">
+
+            <div class="masonry">
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-lady-shutterbug.jpg" class="thumb-link" title="Shutterbug"
+                                data-size="1200x1200">
+                                <img src="images/portfolio/lady-shutterbug.jpg" srcset="images/portfolio/lady-shutterbug.jpg 1x, images/portfolio/lady-shutterbug@2x.jpg 2x"
+                                    alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                Conectando
+                            </h3>
+                            <p class="item-folio__cat">
+                                Futuro
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div> <!-- end masonry__brick -->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" title="Woodcraft"
+                                data-size="1200x1200">
+                                <img src="images/portfolio/woodcraft.jpg" srcset="images/portfolio/woodcraft.jpg 1x, images/portfolio/woodcraft@2x.jpg 2x"
+                                    alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                Luzes
+                            </h3>
+                            <p class="item-folio__cat">
+                                Design
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div> <!-- end masonry__brick -->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-the-beetle.jpg" class="thumb-link" title="The Beetle Car"
+                                data-size="1200x1200">
+                                <img src="images/portfolio/the-beetle.jpg" srcset="images/portfolio/the-beetle.jpg 1x, images/portfolio/the-beetle@2x.jpg 2x"
+                                    alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                Fechaduras
+                            </h3>
+                            <p class="item-folio__cat">
+                                Segurança
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div> <!-- end masonry__brick -->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-salad.jpg" class="thumb-link" title="Grow Green"
+                                data-size="1200x1200">
+                                <img src="images/portfolio/salad.jpg" srcset="images/portfolio/salad.jpg 1x, images/portfolio/salad@2x.jpg 2x"
+                                    alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                Eletrônicos
+                            </h3>
+                            <p class="item-folio__cat">
+                                Interconectividade
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div> <!-- end masonry__brick -->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-lamp.jpg" class="thumb-link" title="Guitarist"
+                                data-size="1200x1200">
+                                <img src="images/portfolio/lamp.jpg" srcset="images/portfolio/lamp.jpg 1x, images/portfolio/lamp@2x.jpg 2x"
+                                    alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                Sensores
+                            </h3>
+                            <p class="item-folio__cat">
+                                Dispositivos Wireless
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div> <!-- end masonry__brick -->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-fuji.jpg" class="thumb-link" title="Palmeira" data-size="1200x1200">
+                                <img src="images/portfolio/fuji.jpg" srcset="images/portfolio/fuji.jpg 1x, images/portfolio/fuji@2x.jpg 2x"
+                                    alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                Sensores e tomadas
+                            </h3>
+                            <p class="item-folio__cat">
+                                Sustentabilidade
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div> <!-- end masonry__brick -->
+
+            </div> <!-- end masonry -->
+
+        </div> <!-- end masonry-wrap -->
+
+    </section> <!-- end s-works -->
+
+
+    <!-- clients
+    ================================================== -->
+    <section id="clients" class="s-clients target-section darker">
+
+        <div class="grid-overlay">
+            <div></div>
+        </div>
+
+        <div class="row section-header text-center narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Fabricantes</h3>
+                <h1 class="display-1">Oferecemos cada produto de acordo com a preferência e necessidade do cliente.</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row clients-wrap" data-aos="fade-up">
+            <div class="col-twelve">
+                <ul class="clients">
+                    <li><a href="#0">Amazon</a></li>
+                    <li><a href="#0">Microsoft</a></li>
+                    <li><a href="#0">Apple</a></li>
+                    <li><a href="#0">Google</a></li>
+                    <li><a href="#0">Asus</a></li>
+                    <li><a href="#0">Philips</a></li>
+                    <li><a href="#0">Samsung</a></li>
+                    <li><a href="#0">Honeywell</a></li>
+                    <li><a href="#0">Logitech</a></li>
+                    <li><a href="#0">D-link</a></li>
+                    <li><a href="#0">TP-Link</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </section> <!-- end s-clients -->
+
+
+    <!-- testimonies
+    ================================================== -->
+    <section class="s-testimonials">
+
+        <div class="testimonials__icon" data-aos="fade-up"></div>
+
+        <div class="row testimonials narrow">
+
+            <div class="col-full testimonials__slider" data-aos="fade-up">
+
+                <div class="testimonials__slide">
+                    <p>"This level of home automation was unimaginable just a few years ago, and it's here today with
+                        iOS and HomeKit," <br />
+                        "Este nível de automação residencial era inimaginável há alguns anos, e está aqui hoje com o
+                        iOS e o HomeKit"</p>
+                    <div class="testimonials__author">
+                        Tim Cook
+                        <span>CEO, Apple</span>
+                    </div>
+                </div> <!-- end testimonials__slide -->
+
+                <div class="testimonials__slide">
+                    <p>We want customers to be able to use Virtual Assistent wherever they are.<br />
+                        Queremos que os clientes possam usar o Virtual Assistent onde quer que estejam.</p>
+                    <div class="testimonials__author">
+                        Jeff Bezos
+                        <span>CEO, Amazon</span>
+                    </div>
+                </div> <!-- end testimonials__slide -->
+
+                <div class="testimonials__slide">
+                    <p>
+                        As a function of the AI, services predict the smarthome market continues to grow. <br />
+                        Em funcão da IA, especialistas prevêem que o mercado smarthome continuará a crescer.</p>
+                    <div class="testimonials__author">
+                        Satya Nadella
+                        <span>CEO, Microsoft</span>
+                    </div>
+                </div> <!-- end testimonials__slide -->
+
+            </div> <!-- end testimonials__slider -->
+
+        </div> <!-- end testimonials -->
+
+    </section> <!-- end s-testimonials -->
+
+
+    <!-- contact
+    ================================================== -->
+    <section id="contact" class="s-contact target-section">
+
+        <div class="grid-overlay">
+            <div></div>
+        </div>
+
+        <div class="row section-header narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Keep In Touch</h3>
+                <h1 class="display-1">Sinta-se a vontade para nos contatar para qualquer<br> projeto, idéia e
+                    colaboração.</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row contact-main" data-aos="fade-up">
+            <div class="col-full">
+                <p class="contact-email">
+                    <a href="mailto:#0">contato@intellig.com.br</a>
+                </p>
+                <p class="contact-address">
+                </p>
+                <p class="contact-numbers">
+                    +1 (587) 969 2073 &nbsp; +55 (41) 99979-9987
+                </p>
+
+
+                <ul class="contact-social">
+                    <li>
+                        <a href="#0"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-dribbble"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </section> <!-- end s-contact -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full ss-copyright">
+                <span>© 2018 Intellig Systems and Home Automation. All Rights Reserved.</span>
+                <span>Vancouver - CA</a></span>
+                <span>Curitiba - Brazil</a></span>
+            </div>
+        </div>
+
+        <div class="ss-go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top">Back to Top</a>
+        </div>
+    </footer>
+
+
+    <!-- photoswipe background
+    ================================================== -->
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button> <button class="pswp__button pswp__button--fs"
+                        title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div> <!-- end photoSwipe background -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
