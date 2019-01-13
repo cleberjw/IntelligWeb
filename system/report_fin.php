@@ -57,7 +57,7 @@
                                                                 } ?>
                                                                     <th style="vertical-align: middle" scope="row">000<?php echo $expense['id_exp']; ?></th>
                                                                     <td style="vertical-align: middle"><?php echo $expense['date_exp']; ?></td>
-                                                                    <td style="vertical-align: middle; text-align: center;"><?php date_default_timezone_set('America/Sao_Paulo');$date = date('Y-m-d H:i'); if ($expense['date_pay_exp'] == "" && $expense['date_exp'] < '2018-11-26') {
+                                                                    <td style="vertical-align: middle; text-align: center;"><?php date_default_timezone_set('America/Sao_Paulo');$date = date('Y-m-d H:i'); if ($expense['date_pay_exp'] == "" && $expense['date_exp'] < $date) {
                                                                                                                                 echo "<a><span class=\"piscar\"><ion-icon name=\"calculator\"></ion-icon> PAGAMENTO PENDENTE </span></a>";
                                                                                                                             } else {
                                                                                                                                 echo $expense['date_pay_exp'];

@@ -1,8 +1,8 @@
 <?php
 /** O nome do banco de dados*/
-define('DB_NAME', 'id7644118_db_intellig');
+define('DB_NAME', 'id7497666_db_crud');
 /** Usuário do banco de dados MySQL */
-define('DB_USER', 'id7644118_root_intellig');
+define('DB_USER', 'id7497666_root');
 /** Senha do banco de dados MySQL */
 define('DB_PASSWORD', '7499CCcc');
 /** nome do host do MySQL */
