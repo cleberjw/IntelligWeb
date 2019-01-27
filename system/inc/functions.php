@@ -19,11 +19,13 @@ function index() {
 	global $users;
 	global $expenses;
 	global $categories;
+	global $products;
 
 	$customers = find_all('tbl_customers');
 	$users = find_all('tbl_users');
 	$expenses = find_all('tbl_expenses');
 	$category = find_all('tbl_category');
+	$products = find_all('tbl_products');	
 }
 
 /**
@@ -119,15 +121,15 @@ function delete_exp($id = null) {
 
   
 /******************************************************************************************************************************
- *  	QUERY'S SELECT DATABASE                                                   *
+ *  												QUERY'S SELECT DATABASE                                                   *
  *****************************************************************************************************************************/
 
 /**
  *  Pesquisa um Registro pelo ID em uma Tabela
  */
-                          /*************************
-                           *  Select tbl_users  *
-                           ************************/
+ /*************************
+ *  Select tbl_users  *
+ ************************/
 /**
  *  Pesquisa Usuário por ID
  */
@@ -204,9 +206,9 @@ function delete_exp($id = null) {
 		return find($table);
 	  }
 	
-							  /*************************
-							   *  Select tbl_users  *
-							   ************************/
+	/*************************
+	*  SELECT TBL_USERS      *
+	************************/
 	  
 	  /**
 	 *  Conta Todos os Registros da Tabela de Clientes
@@ -272,7 +274,7 @@ function delete_exp($id = null) {
 	
 	
 	/******************************************************************************************************************************
-	 *  																								QUERY'S INSERT DATABASE                                                   *
+	 *  												QUERY'S INSERT DATABASE                                                   *
 	 *****************************************************************************************************************************/
 	
 	 /**
@@ -312,7 +314,7 @@ function delete_exp($id = null) {
 	}
 	
 	/******************************************************************************************************************************
-	 *  																								QUERY'S UPDATE DATABASE                                                   *
+	 *  												QUERY'S UPDATE DATABASE                                                   *
 	 *****************************************************************************************************************************/
 	
 	 /**
@@ -442,7 +444,7 @@ function delete_exp($id = null) {
 	}
 	
 	/******************************************************************************************************************************
-	 *  																								QUERY'S DELETE DATA                                                       *
+	 *  												QUERY'S DELETE DATA                                                       *
 	 *****************************************************************************************************************************/
 	/**
 	 *  Remove uma linha de uma tabela pelo ID do registro

@@ -261,7 +261,10 @@ add_cat();
                                                                 </div>
                                                                 <div class="form-group col-md-3">
                                                                     <label for="name">Status</label>
-                                                                    <input style="border-radius: 3px" type="text" class="form-control" name="customer['name_cli']">
+                                                                    <select name="status" class="form-control">
+                                                                        <option value="0" select>Ativo</option>
+                                                                        <option value="1">Inativo</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                                 <div class="row">
@@ -287,7 +290,7 @@ add_cat();
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
                                                                         <label for="name">Categoria</label>
-                                                                        <select id="client" required name="client" class="form-control">
+                                                                        <select id="category" required name="category" class="form-control">
                                                                             <option value="" selected>Selecionar</option>
                                                                                 <?php $conn = open_database();
                                                                                 mysqli_set_charset($conn, "utf8");

@@ -194,7 +194,7 @@ index();
                     <li><a href="#exampledropdownDropdown_prod" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Produtos </a>
                       <ul id="exampledropdownDropdown_prod" class="collapse list-unstyled ">
                         <li><a href="input_prd.php"><ion-icon name="checkbox-outline"></ion-icon> Cadastrar</a></li>
-                        <li><a href="#"><ion-icon name="checkbox-outline"></ion-icon> Relatório</a></li>
+                        <li><a href="report_prd.php"><ion-icon name="checkbox-outline"></ion-icon> Relatório</a></li>
 <!--                        <li><a href="#">Update</a></li>-->
                     </ul>
           </ul><span class="heading" style="font-family: 'Bai Jamjuree'"><ion-icon name="list-box"></ion-icon> Social</span>
