@@ -54,7 +54,7 @@ session_start();
                             <div class="info d-flex align-items-center">
                                 <div class="content">
                                     <div class="logo">
-                                        <a href="http://intellig.000webhostapp.com"><img src="img/logo.png" alt="" width="75%"/></a>
+                                        <a href="http://www.intellig.com.br"><img src="img/logo.png" alt="" width="75%"/></a>
                                     </div>
                                     <p style="text-align: center; font-size: 1.1em; letter-spacing: .1em">A inteligência interligando tudo.</p>
                                 </div>
@@ -80,9 +80,9 @@ session_start();
                                     $pass = isset($_POST['loginPassword']) ? $_POST['loginPassword'] : 0;
 
                                     $servername = "localhost";
-                                    $username = "id7644118_root_intellig";
-                                    $password = "7499CCcc";
-                                    $dbname = "id7644118_db_intellig";
+                                    $username = "intell89_admin";
+                                    $password = "B5d53e9aeF";
+                                    $dbname = "intell89_db_intellig";
 
                                     // Create connection
                                     $conn = new mysqli($servername, $username, $password, $dbname);
