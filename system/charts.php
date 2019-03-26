@@ -6,7 +6,7 @@
                     <!-- Page Header-->
                     <header class="page-header">
                         <div class="container-fluid">
-                            <img id='logo' src="img/logo.png" alt="" width="12%" />
+                            <img id='logo' src="img/logo.png" alt="" width="10%" />
                             <!-- <img id='logoRight' style="display:block; margin-left: auto; margin-right: auto; float: right" src="img/logo-monaco.png" width="14%" class="rounded" alt=""> -->
                             <div class="container-fluid">
                                 <h2 id='logo' style="font-family: 'Bai Jamjuree'" class="no-margin-bottom">Gráficos</h2>

@@ -1,242 +1,167 @@
-<?php 	  
-    require_once('inc/functions.php');
-    add_exp();	
+<?php
+require_once('inc/functions.php');
+add_exp();
+add_cat();
 ?>
 <?php include(HEADER_TEMPLATE); ?>
 
-
-            <div class="content-inner">
-                <!-- Page Header-->
-                <header class="page-header">
-                    <div class="container-fluid">
-                        <img id='logo' src="img/logo.png" alt="" width="12%" />
-                        <!-- <img id='logoRight' style="display:block; margin-left: auto; margin-right: auto; float: right"
-                            src="img/logo-monaco.png" width="14%" class="rounded" alt=""> -->
-                        <div class="container-fluid">
-                            <h2 id='logo' style="font-family: 'Bai Jamjuree'" class="no-margin-bottom">Financeiro</h2>
+    <div class="content-inner">
+    <!-- Page Header-->
+    <header class="page-header">
+        <div class="container-fluid">
+            <img id='logo' src="img/logo.png" alt="" width="10%"/>
+            <!-- <img id='logoRight' style="display:block; margin-left: auto; margin-right: auto; float: right"
+                src="img/logo-monaco.png" width="14%" class="rounded" alt=""> -->
+            <div class="container-fluid">
+                <h2 id='logo' style="font-family: 'Oswald', sans-serif; letter-spacing: 0.1em; font-size: 0.8em" class="no-margin-bottom"></h2>
+            </div>
+        </div>
+    </header>
+    <!-- Breadcrumb-->
+    <div class="breadcrumb-holder container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item active">Financeiro - Cadastro </li>
+        </ul>
+    </div>
+    <!-- Forms Section-->
+    <section class="forms">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-close">
+                            <div class="dropdown">
+                                <button type="button" id="closeCard5" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
+                                <div aria-labelledby="closeCard5" class="dropdown-menu dropdown-menu-right has-shadow"><a
+                                            href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a
+                                            href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a>
+                                </div>
+                            </div>
                         </div>
+                        <form method="POST" action="input_fin.php" enctype="multipart/form-data"
+                              accept-charset="utf-8">
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.1em; font-size: 1em"><i style="font-size: 2em" class="icon-check"></i></h3>
+                            </div>
+                            <div class="card-body">
+                                <form class="form-horizontal">
+                                    <div class="row">
+                                        <div class="form-group col-md-1">
+                                            <label for="">ID Despesa</label>
+                                            <input type="text" class="form-control" name="expense['id_exp']" placeholder="00000<?php echo last_exp()+1?>" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-5">
+                                            <label for="">Fornecedor</label>
+                                            <div class="input-group mb-2 mr-sm-2">
+                                                <select style="font-size: 1em;" id="fornecedores" required name="expense['supplier_exp']" class="form-control" required>
+                                                    <option value="" selected></option>
+                                                    <?php $conn = open_database();
+                                                    mysqli_set_charset($conn, "utf8");
+                                                    $sql_for = mysqli_query($conn, "select distinct * from tbl_providers"); ?>
+                                                    <?php while ($consult = mysqli_fetch_array($sql_for)) : ?>
+                                                        <option><?php echo $consult[1]?></option>
+                                                    <?php endwhile; ?>
+                                                </select></br>
+                                                <div style="border-radius: 0" class="btn btn-primary" data-toggle="modal" data-target="#add-modal-for"><i class="fas fa-plus-square"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="">Plano de Contas</label>
+                                            <div class="input-group mb-2 mr-sm-2">
+                                                <select style="font-size: 1em;" id="categorias" required name="expense['cat_exp']" class="form-control" required>
+                                                    <option value="" selected></option>
+                                                    <?php $conn = open_database();
+                                                    mysqli_set_charset($conn, "utf8");
+                                                    $sql_cat = mysqli_query($conn, "select distinct * from tbl_category"); ?>
+                                                    <?php while ($consult = mysqli_fetch_array($sql_cat)) : ?>
+                                                        <option><?php echo $consult[1]?></option>
+                                                    <?php endwhile; ?>
+                                                </select></br>
+                                                <div style="border-radius: 0" class="btn btn-primary" data-toggle="modal" data-target="#add-modal-cat"><i class="fas fa-plus-square"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="">Vencimento</label>
+                                            <div class="input-group mb-2 mr-sm-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="fas fa-calendar-minus"></i></div>
+                                                </div>
+                                                <input type="text" class="form-control" id="birthday" name="expense['date_exp']">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="">Emissão</label>
+                                            <div class="input-group mb-2 mr-sm-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="far fa-calendar-check"></i></div>
+                                                </div>
+                                                <input type="text" class="form-control" id="birthday" name="expense['issue_exp']">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-2">
+                                            <label for="">Valor</label>
+                                            <div class="input-group mb-2 mr-sm-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="fas fa-dollar-sign"></i></div>
+                                                </div>
+                                                <input type="text" class="form-control" name="expense['value_exp']">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="">Repetir</label>
+                                            <div class="input-group mb-2 mr-sm-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="fas fa-times"></i></div>
+                                                </div>
+                                                <input type="text" class="form-control" name="">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-5">
+                                            <label for="">Código de Barras</label>
+                                            <div class="input-group mb-2 mr-sm-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="fas fa-barcode"></i></div>
+                                                </div>
+                                                <input type="text" class="form-control" name="expense['codebar_exp']">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="">Pagamento</label>
+                                            <div class="input-group mb-2 mr-sm-2">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="fas fa-calendar-minus"></i></div>
+                                                </div>
+                                                <input type="text" class="form-control" id="birthday" name="expense['date_pay_exp']">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <input type="file" name="file" id="file" class="input-file">
+                                            <label for="file" class="btn btn-tertiary js-labelFile">
+                                                <i class="icon fa fa-check"></i>
+                                                <span class="js-fileName"> Comprovante</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-4 offset-sm-10">
+                                            <a href="report_fin.php" style="font-family: 'Bai Jamjuree'; font-size: 1em" class="btn btn-secondary" role="button">Cancel</a>
+                                            <button id="save" type="submit" style="font-family: 'Bai Jamjuree'; font-size: 1em" class="btn btn-primary" ><span
+                                                        id="button"> Cadastrar</span></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </form>
                     </div>
-                </header>
-                <!-- Breadcrumb-->
-                <div class="breadcrumb-holder container-fluid">
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active">Financeiro - Cadastrar </li>
-                    </ul>
                 </div>
-                <!-- Forms Section-->
-                <section class="forms">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <!--Modal Form-->
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-close">
-                                        <div class="dropdown">
-                                            <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                                            <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a
-                                                    href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a
-                                                    href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="card-header d-flex align-items-center">
-                                        <h3 class="h4" style="font-family: 'Bai Jamjuree'" >
-                                            <ion-icon size="large" name="card"></ion-icon> Despesas
-                                        </h3>
-                                    </div>
-                                    <div class="card-body text-center">
-                                        <button type="button" data-toggle="modal" data-target="#myModal" id="btn-fin-inputEx"
-                                            class="btn btn-secondary">Cadastrar Despesa </button>
-                                        <!--Modal-->
-                                        <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                            aria-hidden="true" class="modal fade text-left">
-                                            <div role="document" class="modal-dialog">
-                                                <div style="border-radius: 8px" class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 style="font-family: 'Bai Jamjuree'" id="exampleModalLabel" class="modal-title">
-                                                            <ion-icon size="large" name="ios-paper"></ion-icon> DESPESA
-                                                        </h4>
-                                                        <button type="button" data-dismiss="modal" aria-label="Close"
-                                                            class="close"><span aria-hidden="true">×</span></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Informação sobre a despesa.</p>
-                                                        <form method="POST" action="input_fin.php" enctype="multipart/form-data"
-                                                            accept-charset="utf-8">
-                                                            <div class="form-group">
-                                                                <label>Fornecedor</label>
-                                                                <input type="text" name="expense['supplier_exp']" class="form-control" required="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Valor</label>
-                                                                <input type="number" name="expense['value_exp']" class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Vencimento</label>
-                                                                <input type="date" name="expense['date_exp']" class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Pagamento</label>
-                                                                <input type="date" name="expense['date_pay_exp']" class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Código de Barra</label>
-                                                                <input type="text" name="expense['codebar_exp']" class="form-control">
-                                                            </div>
-                                                            <div class="form-group row">
-                                                            <div class="modal-footer">
-                                                            <a id="confirm" class="btn btn-primary" href="input_fin.php">Cancel</a>
-                                                            <button id="save" type="submit" class="btn btn-default">Cadastrar</button>
-                                                        </div>
-                                                        </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Modal Form-->
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-close">
-                                        <div class="dropdown">
-                                            <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                                            <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a
-                                                    href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Fechar</a><a
-                                                    href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Editar</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="card-header d-flex align-items-center">
-                                        <h3 class="h4" style="font-family: 'Bai Jamjuree'" >
-                                            <ion-icon size="large" name="cash"></ion-icon> Recebimentos
-                                        </h3>
-                                    </div>
-                                    <div class="card-body text-center">
-                                        <button type="button" data-toggle="modal" data-target="#myModal1" id="btn-fin-inputIn"
-                                            class="btn btn-secondary">Cadastrar Recebimento </button>
-                                        <!--Modal-->
-                                        <div id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                            aria-hidden="true" class="modal fade text-left">
-                                            <div role="document" class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 id="exampleModalLabel" style="font-family: 'Bai Jamjuree'"  class="modal-title">
-                                                            <ion-icon size="large" name="done-all"></ion-icon>RECEBIMENTO
-                                                        </h4>
-                                                        <button type="button" data-dismiss="modal" aria-label="Close"
-                                                            class="close"><span aria-hidden="true">×</span></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Informação sobre o recebimento.</p>
-                                                        <form method="POST" action="phpmailer/send_data.php" enctype="multipart/form-data"
-                                                            accept-charset="utf-8">
-                                                            <div class="form-group">
-                                                                <label>Cliente</label>
-                                                                <input type="text" name="Supplier_exp" placeholder=""
-                                                                    class="form-control" required="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Descrição</label>
-                                                                <input type="text" name="desc_exp" placeholder=""
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Valor</label>
-                                                                <input type="number" name="value_exp" placeholder=""
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Vencimento</label>
-                                                                <input type="text" name="date_exp" id="datepicker"
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Recebimento</label>
-                                                                <input type="date" name="date_exp" placeholder=""
-                                                                    class="form-control">
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Modal Form-->
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-close">
-                                        <div class="dropdown">
-                                            <button type="button" id="closeCard4" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                                            <div aria-labelledby="closeCard4" class="dropdown-menu dropdown-menu-right has-shadow"><a
-                                                    href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Fechar</a><a
-                                                    href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Editar</a></div>
-                                        </div>
-                                    </div>
-                                    <div class="card-header d-flex align-items-center">
-                                        <h3 class="h4" style="font-family: 'Bai Jamjuree'" >
-                                            <ion-icon size="large" name="wallet"></ion-icon> Folha de Salários
-                                        </h3>
-                                    </div>
-                                    <div class="card-body text-center">
-                                        <button type="button" data-toggle="modal" data-target="#myModal2" id="btn-fin-input"
-                                            class="btn btn-secondary">Cadastrar Salário </button>
-                                        <!--Modal-->
-                                        <div id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                            aria-hidden="true" class="modal fade text-left">
-                                            <div role="document" class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h4 style="font-family: 'Bai Jamjuree'" id="exampleModalLabel" class="modal-title">
-                                                            <ion-icon size="large" name="done-all"></ion-icon>SALÁRIO
-                                                        </h4>
-                                                        <button type="button" data-dismiss="modal" aria-label="Close"
-                                                            class="close"><span aria-hidden="true">×</span></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Informações sobre salários.</p>
-                                                        <form method="POST" action="phpmailer/send_data.php" enctype="multipart/form-data"
-                                                            accept-charset="utf-8">
-                                                            <div class="form-group">
-                                                                <label>Colaborador</label>
-                                                                <input type="text" name="Supplier_exp" placeholder=""
-                                                                    class="form-control" required="">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Cargo</label>
-                                                                <input type="text" name="desc_exp" placeholder=""
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Salário</label>
-                                                                <input type="number" name="value_exp" placeholder=""
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Admissão</label>
-                                                                <input type="date" name="date_exp" placeholder=""
-                                                                    class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Vencimento</label>
-                                                                <input type="date" name="date_exp" placeholder=""
-                                                                    class="form-control">
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+            </div>
+    </section>
+<?php require('modals/modal.php') ?>
 <?php include(FOOTER_TEMPLATE); ?>

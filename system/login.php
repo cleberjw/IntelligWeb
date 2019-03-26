@@ -79,10 +79,17 @@ session_start();
                                     $user = isset($_POST['loginUsername']) ? $_POST['loginUsername'] : 0;
                                     $pass = isset($_POST['loginPassword']) ? $_POST['loginPassword'] : 0;
 
+//                                    $servername = "localhost";
+//                                    $username = "intell89_admin";
+//                                    $password = "B5d53e9aeF";
+//                                    $dbname = "intell89_db_intellig";
+
                                     $servername = "localhost";
-                                    $username = "intell89_admin";
-                                    $password = "B5d53e9aeF";
-                                    $dbname = "intell89_db_intellig";
+                                    $username = "root";
+                                    $password = "";
+                                    $dbname = "id7497666_db_crud";
+
+
 
                                     // Create connection
                                     $conn = new mysqli($servername, $username, $password, $dbname);

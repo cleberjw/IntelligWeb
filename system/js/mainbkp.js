@@ -63,56 +63,53 @@ $(function() {
 
 
 // Adicionando Produtos Tela de Orçamento
-var arrProd = [];
-$("#inclui").click(function(e) {
-    e.preventDefault();
 
-    var descprod = $('#descprod').val();
-    if (descprod.trim() == "" ) {
+$("#inclui").click(function() {
+
+    if (document.getElementById('descprod').value == "" ) {
         alert("É necessário informar o item para adicionar ao pedido!");
         callback();
-    }
-
-    var prodSelected = $('#descprod').find('option:selected');
-    var codProduto = prodSelected.attr('cod');
-    var valor = prodSelected.attr('valor');
-
-    var qtdprod = $('#qtdprod').val();
-    if (qtdprod == "" ) {
+        } else {
+            var descprod = document.getElementById('descprod').value;
+        }
+    if (document.getElementById('qtdprod').value == "" ) {
+        var qtdprod = document.getElementById('qtdprod').value;
         alert("É necessário informar a quantidade do produto selecionado");
         callback();
-    }
-    if (_.findIndex(arrProd, {codProduto: codProduto} ) === -1){
-        arrProd.push(
-            {
-                codProduto: codProduto,
-                descProduto: descprod,
-                quantidade: qtdprod,
-                valor: valor
-            }
-        );
-    }else{
-        let idx = _.findIndex(arrProd, {codProduto: codProduto} );
-        let qtdProduto = +arrProd[idx].quantidade;
-        arrProd[idx].quantidade = qtdProduto + +qtdprod;
-    }
-    $("#campos").html("");
-    _.forEach(arrProd, (prod) =>{
-        var select =  '<tr>';
-        select += '<th style="vertical-align: middle" scope="row">' + prod.codProduto + '</th>';
-        select += '<th style="vertical-align: middle" scope="row">' + prod.descProduto + '</th>';
-        select += '<th style="vertical-align: middle; text-align: center">' + prod.quantidade + '</th>';
-        select += '<th style="vertical-align: middle; text-align: center">' + prod.valor + '</th>';
-        select += '<th style="vertical-align: middle; text-align: center">' + prod.valor + '</th>';
-        select += '<th>';
-        select += '<a style="font-family: \'Bai Jamjuree\'" id="btn-edit" href="" class="btn btn-warning btn-sm"><i class="material-icons md-18">cached</i></a>';
-        select += '<a style="font-family: \'Bai Jamjuree\'" id="btn-trash" href="#" data-toggle="modal" data-target="#delete-modal" data-customer="" class="btn btn-danger btn-sm tooltiptext" value="disable" alt="Disable" ><i class="material-icons md-18">delete_outline</i></a>';
-        select += '</th>';
-        select += '</tr>';
+        } else {
+            var qtdprod = document.getElementById('qtdprod').value;
+        }
 
-        $("#campos").append(select);
-    });
+    buscar($("select[name='descproduct']").val(),
+           $("input[name='qtdprod']").val()
+    );
+
+    event.preventDefault();
+
+    return false;
+
 });
+
+function buscar(produto,qtd) {
+    var page = "input_orc_cons.php";
+    var dadosajax = {
+        produto : produto,
+        qtd : qtd
+    }
+
+    $.ajax({
+        type: 'POST',
+        dataType: 'html',
+        url: page,
+        beforeSend: function() {
+            $("#campos").html("Carregando...");
+        },
+        data: dadosajax,
+        success : function(msg) {
+            $("#campos").html(msg);
+        }
+    })
+}
 
 //Botão inserir imagem
 (function() {
@@ -144,19 +141,3 @@ $(document).ready(function() {
 } );
 
 
-function buscar(produto) {
-    var page = "input_orc_cons.php";
-
-    $.ajax({
-        type: 'POST',
-        dataType: 'html',
-        url: page,
-        beforeSend: function() {
-            $("#campos").html("Carregando...");
-        },
-        data: {produto: produto},
-        success : function(msg) {
-            $("#campos").html(msg);
-        }
-    })
-}

@@ -981,8 +981,8 @@ button.btn--primary:focus,
 input[type="submit"].btn--primary:focus,
 input[type="reset"].btn--primary:focus,
 input[type="button"].btn--primary:focus {
-  background: #6b3792;
-  border-color: #6b3792;
+  background: transparent;
+  border-color: transparent;
 }
 
 /* button modifiers
@@ -2233,10 +2233,6 @@ body.menu-is-open {
   font-size: 13px;
 }
 
-#about:hover,#about:focus {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-color: transparent;
- }
 
 /* ------------------------------------------------------------------- 
  * ## home scroll

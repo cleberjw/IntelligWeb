@@ -399,7 +399,7 @@ input {
 }
 
 #btn-fin-inputIn {
-  background-color: rgb(0,128,0,.6);
+  background-color: rgba(0,128,0,.6);
   border: none;
 }
 

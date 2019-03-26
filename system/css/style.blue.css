@@ -386,6 +386,60 @@ input {
 
 /*
 * ==========================================================
+*     EFFECT MSN PAYMENT OPEN LOCATION: REPORT_FIN.PHP
+* ==========================================================
+*/
+.piscar {
+  color: red;
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: blinker;
+  -moz-animation-duration: 1s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  animation-name: blinker;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@-moz-keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+@-webkit-keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+@keyframes blinker {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+/*
+* ==========================================================
 *     SIDEBAR
 * ==========================================================
 */
@@ -766,6 +820,8 @@ nav.navbar .nav-link span.badge-corner {
 nav.navbar .nav-link.language span {
   margin-left: .3rem;
   vertical-align: middle;
+  font-size: 0.8em;
+  font-family: 'Roboto', sans-serif;
 }
 
 nav.navbar .nav-link.logout i {
@@ -936,9 +992,6 @@ nav.navbar .dropdown-menu h3 {
   nav.navbar .badge {
     width: 19px;
     height: 19px;
-  }
-  nav.navbar .nav-item > a {
-    font-size: 13px;
   }
   nav.navbar .dropdown-menu {
     right: auto;
@@ -1636,21 +1689,21 @@ section.charts div[class*="col-"] {
 .form-control::-moz-placeholder {
   font-size: 0.9em;
   font-weight: 300;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #aaa;
 }
 
 .form-control::-webkit-input-placeholder {
   font-size: 0.9em;
   font-weight: 300;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #aaa;
 }
 
 .form-control:-ms-input-placeholder {
   font-size: 0.9em;
   font-weight: 300;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #aaa;
 }
 
@@ -2798,7 +2851,7 @@ STYLE SWITCHER FOR DEMO
  * 3. TYPE  
  */
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -3352,6 +3405,11 @@ a > code {
 
 .card-body {
   padding: 1.25rem;
+  font-size: 0.9em;
+}
+
+.card-body input {
+  font-size: 1.0em;
 }
 
 .card-title {
@@ -3494,4 +3552,35 @@ a > code {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
   font-size: 125%;
+}
+
+@media (min-width: 1900px) {
+  img#logo {
+    width: 175px;
+    height: 65px;
+  }
+}
+
+@media (max-width: 1030px) {
+  img#logo {
+    width: 175px;
+    height: 65px;
+  }
+}
+
+
+@media (max-width: 575px) {
+  .container-fluid {
+    padding: 0 15px;
+  }
+  img#logo {
+    width: 120px;
+    height: 50px;
+  }
+
+}
+
+h2#logo{
+  font-size: 1.0em;
+  margin-left: 15px;
 }

@@ -1,5 +1,5 @@
 <?php 
-  require_once('inc/functions.php'); 
+  require_once('inc/functions.php');
 
   if (isset($_GET['id_cli'])){
     delete_cli($_GET['id_cli']);
@@ -8,3 +8,8 @@
   } else {
     die("ERRO: ID não definido.");
   }
+
+
+
+
+

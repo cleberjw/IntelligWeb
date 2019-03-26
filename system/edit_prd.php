@@ -1,8 +1,10 @@
 <?php
 require_once('inc/functions.php');
-add_prd();
+ob_start();
+edit_prd();
 
 ?>
+
 <?php include(HEADER_TEMPLATE); ?>
 
     <div class="content-inner">
@@ -21,9 +23,10 @@ add_prd();
     <div class="breadcrumb-holder container-fluid">
         <ul class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-            <li class="breadcrumb-item active">Produtos - Cadastrar </li>
+            <li class="breadcrumb-item active">Produto - Editar </li>
         </ul>
     </div>
+
     <!-- Forms Section-->
     <section class="forms">
         <div class="container-fluid">
@@ -40,65 +43,64 @@ add_prd();
                                 </div>
                             </div>
                         </div>
-                        <form method="POST" action="input_prd.php" enctype="multipart/form-data"
-                              accept-charset="utf-8">
+                        <form action="edit_prd.php?id_prd=<?php echo $product['id_prd']; ?>" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+
                             <div class="card-header d-flex align-items-center">
-                                <h3 class="h4" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.1em; font-size: 1em"><i style="font-size: 2em; color: darkgray" class="fas fa-box"></i></h3>
+                                <h3 class="h4" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.1em; font-size: 1em"><i style="font-size: 1.2em" class="fas fa-list-alt"></i> PRODUTOS</h3>
                             </div>
                             <div class="card-body">
                                 <form class="form-horizontal">
-                                    <div class="row">
+                                        <div class="row">
                                         <div class="form-group col-md-1">
-                                            <label for="name">ID Produto</label>
-                                            <input type="text" class="form-control" name="product['id_prd']" placeholder="00<?php echo last_prd() + 1?>" disabled>
+                                            <label for="">ID Produto</label>
+                                            <input type="text" class="form-control" name="product['id_prd']" placeholder="000<?php echo last_prd() + 1?>" disabled>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label for="">Descrição</label>
-                                            <div class="input-group mb-2 mr-sm-2">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text"><i class="far fa-keyboard"></i></div>
-                                                </div>
-                                                <input type="text" class="form-control" name="product['desc_prd']" required>
-                                            </div>
+                                            <input type="text" class="form-control" name="product['desc_prd']" value="<?php echo $product['desc_prd']; ?>">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="">English Description</label>
-                                            <input type="text" class="form-control" name="">
+                                            <input type="text" class="form-control" name="" value="<?php  ?>">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Cadastrado</label>
-                                            <input type="text" class="form-control" name="" disabled>
+                                            <input type="text" class="form-control" name="" value="<?php echo date('d-m-Y H:i:s', strtotime($product['created_prd'])); ?>" disabled>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Modificado</label>
-                                            <input type="text" class="form-control" name="" disabled>
+                                            <input type="text" class="form-control" name="product['update_prd']" value="<?php echo date('d-m-Y H:i:s', strtotime($product['update_prd'])); ?>" disabled>
                                         </div>
+
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-2">
                                             <label for="">Fabricante</label>
-                                            <input type="text" class="form-control" name="product['brand_prd']">
+                                            <input type="text" class="form-control" name="product['brand_prd']" value="<?php echo $product['brand_prd']; ?>">
                                         </div>
+
                                         <div class="form-group col-md-2">
                                             <label for="">Categoria</label>
-                                            <input type="text" class="form-control" name="product['cat_prd']">
+                                            <input type="text" class="form-control" name="product['cat_prd']" value="<?php echo $product['cat_prd']; ?>">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Fornecedor 1</label>
-                                                <select style="font-size: 1em" id="product" name="product['for1_prd']" class="form-control">
-                                                    <option value="" selected>Selecionar</option>
-                                                    <?php foreach ($providers as $provider) : ?>
-                                                        <option><?php echo $provider['name_pvd']?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
+                                            <select style="font-size: 1em" id="product" name="product['for1_prd']" class="form-control">
+                                                <option value="<?php echo $product['for1_prd']; ?>" selected><?php echo $product['for1_prd']; ?></option>
+                                                <?php foreach ($providers as $provider) : ?>
+                                                    <option data-divider="true" disabled></option>
+                                                    <option><?php echo $provider['name_pvd']?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Fornecedor 2</label>
                                             <select style="font-size: 1em" id="product" name="product['for2_prd']" class="form-control">
                                                 <option value="" selected>Selecionar</option>
                                                 <?php foreach ($providers as $provider) : ?>
+                                                    <option data-divider="true" disabled></option>
                                                     <option><?php echo $provider['name_pvd']?></option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -108,54 +110,51 @@ add_prd();
                                             <select style="font-size: 1em" id="product" name="product['for3_prd']" class="form-control">
                                                 <option value="" selected>Selecionar</option>
                                                 <?php foreach ($providers as $provider) : ?>
+                                                    <option data-divider="true" disabled></option>
                                                     <option><?php echo $provider['name_pvd']?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Código de Barra</label>
-                                            <div class="input-group mb-2 mr-sm-2">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text"><i class="fas fa-barcode"></i></div>
-                                                </div>
-                                                <input type="text" class="form-control" name="product['codebar_prd']">
-                                            </div>
+                                            <input type="text" class="form-control" name="product['codebar_prd']" value="<?php echo $product['codebar_prd']; ?>">
                                         </div>
+
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-1">
                                             <label for="">Mínimo</label>
-                                            <input type="text" class="form-control" name="product['estid_prd']">
+                                            <input type="text"  style="text-align: center" class="form-control" name="product['estid_prd']" value="<?php echo $product['estid_prd']; ?>">
                                         </div>
                                         <div class="form-group col-md-1">
                                             <label for="">Atual</label>
-                                            <input type="text" class="form-control" name="product['estat_prd']">
+                                            <input id="text" type="text" style="text-align: center" class="form-control" name="product['estat_prd']" value="<?php echo $product['estat_prd']; ?>">
                                         </div>
                                         <div class="form-group col-md-1">
                                             <label for="">Disponível</label>
-                                            <input type="text" class="form-control" name="product['estds_prd']">
+                                            <input type="text" class="form-control" name="product['estds_prd']"  value="<?php echo $product['estds_prd']; ?>">
                                         </div>
                                         <div class="form-group col-md-1">
                                             <label for="">Local</label>
-                                            <input type="text" class="form-control" name="product['local_prd']">
+                                            <input type="text" class="form-control" name="product[local_prd']"  value="<?php echo $product['local_prd']; ?>">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Custo</label>
-                                            <div class="input-group mb-2 mr-sm-2">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text"><i class="fas fa-dollar-sign"></i></div>
-                                                </div>
-                                                <input type="text" class="form-control" name="product['value_prd']" required>
-                                            </div>
+                                            <input type="text" class="form-control" name="product['value_prd']"  value="<?php echo $product['value_prd']; ?>">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Status</label>
-                                            <input value="Ativo" placeholder="Ativo" type="text" class="form-control" name="product['status_prd']" disabled>
+                                            <select id="product" name="product['status_prd']" class="form-control" >
+                                                <option value="<?php echo $product['status_prd']?>" selected><?php echo $product['status_prd']?></option>
+                                                <option value="Ativo"><?php echo $product['status_prd'] == 'Ativo' ? '' : 'Ativo'; ?></option>
+                                                <option value="Inativo"><?php echo $product['status_prd'] == 'Inativo' ? '' : 'Inativo'; ?></option>
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Etapa</label>
-                                            <select style="font-size: 1em" id="product" name="product['stage_prd']" class="form-control">
-                                                <option value="" selected>Selecione</option>
+                                            <select id="product" name="product['stage_prd']" class="form-control">
+                                                <option value="<?php echo $product['stage_prd']?>" selected><?php echo $product['stage_prd']?> </option>
+                                                <option data-divider="true" disabled></option>
                                                 <option value="Etapa 1">Etapa 1</option>
                                                 <option value="Etapa 2">Etapa 2</option>
                                                 <option value="Etapa 3">Etapa 3</option>
@@ -171,10 +170,10 @@ add_prd();
                                     </div>
                                     <div class="line"></div>
                                     <div class="form-group row">
-                                        <div class="col-sm-4 offset-sm-10">
-                                            <a href="report_prd.php" style="font-family: 'Bai Jamjuree'; font-size: 1em" class="btn btn-secondary" role="button">Cancel</a>
-                                            <button id="save" type="submit" style="font-family: 'Bai Jamjuree'; font-size: 1em" class="btn btn-primary" ><span
-                                                        id="button"> Cadastrar</span></button>
+                                        <div class="col-sm-4 offset-sm-3">
+                                            <a href="report_prd.php" class="btn btn-secondary" role="button">Cancel</a>
+                                            <button id="save" type="submit" class="btn btn-secondary" ><span
+                                                        id="button"> Atualizar</span></button>
                                         </div>
                                     </div>
                                 </form>
