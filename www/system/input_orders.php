@@ -56,7 +56,7 @@ add_prd();
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Entrada</label>
-                                            <input type="text" class="form-control" id="inbound_date" disabled>
+                                            <input type="text" class="form-control" id="inbound_date" value="<?php echo date('d/M/Y'); ?>"  disabled>
                                         </div>
 
                                         <div class="form-group col-md-2">

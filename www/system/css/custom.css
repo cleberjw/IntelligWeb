@@ -297,5 +297,7 @@ body {
 }
 
 
-
-
+label.error{
+    color: red;
+    font-style: italic;
+}

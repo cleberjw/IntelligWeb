@@ -47,11 +47,10 @@ function add() {
         $today = date_create('now', new DateTimeZone('America/Sao_Paulo'));
 
         $customer = $_POST['customer'];
-        $customer['modified_cli'] = $customer['created_cli'] = $today->format("Y-m-d H:i:s");
-
+        $customer['modified_customer'] = $customer['created_customer'] = $today->format("Y-m-d H:i:s");
 
         save('tbl_customers', $customer);
-        header('location: report_cli.php');
+        header('location: report_customer.php');
     }
 }
 
@@ -183,12 +182,12 @@ function view_exp($id = null) {
 /**
  *  Exclusão de um Cliente
  */
-function delete_cli($id = null) {
+function delete_customer($id = null) {
 
     global $customer;
     $customer = remove('tbl_customers', $id);
 
-    header('location: report_cli.php');
+    header('location: report_customer.php');
 }
 
 /**
@@ -248,8 +247,8 @@ function find( $table = null, $id = null ) {
 
     try {
         if ($id) {
-            if (isset($_GET['id_cli'])) {
-                $field = 'id_cli';
+            if (isset($_GET['id_customer'])) {
+                $field = 'id_customer';
             } elseif (isset($_GET['id_exp'])) {
                 $field = 'id_exp';
             } elseif (isset($_GET['id_prd'])) {
@@ -311,12 +310,12 @@ function find_customers() {
 /**
  *  Pesquisa Cliente por Nome
  */
-function find_name($name_cli) {
+function find_name($name_customer) {
     $database = open_database();
     $table = 'tbl_customers';
 
-    $name_cli = mysqli_query($database,"SELECT name_cli FROM " . $table . " WHERE name_cli = " . "'$name_cli'");
-    $result = mysqli_fetch_array($name_cli);
+    $name_customer = mysqli_query($database,"SELECT name_customer FROM " . $table . " WHERE name_customer = " . "'$name_customer'");
+    $result = mysqli_fetch_array($name_customer);
 
     return $result[0];
 }
@@ -328,8 +327,8 @@ function last() {
     $database = open_database();
     $table = 'tbl_customers';
 
-    $all_client = mysqli_query($database,"SELECT MAX(id_cli) FROM " . $table);
-    $result_last = mysqli_fetch_array($all_client);
+    $all_customer = mysqli_query($database,"SELECT MAX(id_customer) FROM " . $table);
+    $result_last = mysqli_fetch_array($all_customer);
 
     return $result_last[0];
 }
@@ -425,8 +424,8 @@ function last_prd() {
     $database = open_database();
     $table = 'tbl_products';
 
-    $all_client = mysqli_query($database,"SELECT MAX(id_prd) FROM " . $table);
-    $result_last = mysqli_fetch_array($all_client);
+    $all_customer = mysqli_query($database,"SELECT MAX(id_prd) FROM " . $table);
+    $result_last = mysqli_fetch_array($all_customer);
 
     return $result_last[0];
 }
@@ -487,28 +486,28 @@ function save($table = null, $data = null) {
 /**
  *	Atualizacao/Edicao de Cliente
  */
-function edit_cli() {
+function edit_customer() {
 
     $now = date_create('now', new DateTimeZone('America/Sao_Paulo'));
 
-    if (isset($_GET['id_cli'])) {
+    if (isset($_GET['id_customer'])) {
 
-        $id = $_GET['id_cli'];
+        $id = $_GET['id_customer'];
 
         if (isset($_POST['customer'])) {
 
             $customer = $_POST['customer'];
-            $customer['modified_cli'] = $now->format("Y-m-d H:i:s");
+            $customer['modified_customer'] = $now->format("Y-m-d H:i:s");
 
             update('tbl_customers', $id, $customer);
-            header('location: report_cli.php');
+            header('location: report_customer.php');
         } else {
 
             global $customer;
             $customer = find('tbl_customers', $id);
         }
     } else {
-        header('location: report_cli.php');
+        header('location: report_customer.php');
     }
 }
 
@@ -624,7 +623,7 @@ function update($table = null, $id = 0, $data = null) {
 
     $sql  = "UPDATE " . $table;
     $sql .= " SET $items";
-    $sql .= " WHERE id_cli=" . $id . ";";
+    $sql .= " WHERE id_customer=" . $id . ";";
 
     try {
         $database->query($sql);
@@ -761,7 +760,7 @@ function remove( $table = null, $id = null ) {
     try {
         if ($id) {
 
-            $sql = "DELETE FROM " . $table . " WHERE id_cli = " . $id;
+            $sql = "DELETE FROM " . $table . " WHERE id_customer = " . $id;
             $result = $database->query($sql);
 
             if ($result = $database->query($sql)) {

@@ -1,7 +1,6 @@
 <?php
 require_once('inc/functions.php');
 add();
-echo $customer;
 ?>
 <?php include(HEADER_TEMPLATE); ?>
 
@@ -40,8 +39,7 @@ echo $customer;
                                 </div>
                             </div>
                         </div>
-                        <form method="POST" action="input_cli.php" enctype="multipart/form-data"
-                              accept-charset="utf-8">
+                        <form method="POST" action='input_customer.php' id="frmAddCustomer" enctype="multipart/form-data" accept-charset="utf-8">
                             <div class="card-header d-flex align-items-center">
                                 <h3 class="h4" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.1em; font-size: 1em"><i style="font-size: 2em; color: darkgray" class="far fa-address-card"></i></h3>
                             </div>
@@ -50,54 +48,45 @@ echo $customer;
                                     <div class="row">
                                         <div class="form-group col-md-1">
                                             <label for="">ID Cliente</label>
-                                            <input type="text" class="form-control" name="customer['id_cli']" placeholder="000<?php echo last() + 1?>" disabled>
+                                            <input type="text" class="form-control" name="customer['id_customer']" placeholder="000<?php echo last() + 1?>" disabled>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label for="">Nome / Razão Social</label>
-                                            <input type="text" class="form-control" name="customer['name_cli']">
+                                            <input type="text" class="form-control" name="customer['name_customer']">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">CNPJ / CPF</label>
-                                            <input id="CpfCnpj" type="text"  class="form-control" name="customer['cpf_cnpj_cli']">
+                                            <input id="CpfCnpj" type="text"  class="form-control" name="customer['cpf_cnpj_customer']">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">I.E</label>
-                                            <input type="text"  class="form-control" name="customer['cpf_cnpj_cli']">
-                                        </div>
-
-                                        <div class="form-group col-md-2">
-                                            <label for="">Cadastro</label>
-                                            <input type="text" class="form-control" name="customer['created_cli']" disabled>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label for="">Modificado</label>
-                                            <input type="text" class="form-control" name="customer['modified_cli']" disabled>
+                                            <input type="text"  class="form-control" name="customer['ie_customer']">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label for="">Endereço</label>
-                                            <input type="text" class="form-control" name="customer['address_cli']">
+                                            <input type="text" class="form-control" name="customer['address_customer']">
                                         </div>
 
                                         <div class="form-group col-md-2">
                                             <label for="">Bairro</label>
-                                            <input type="text" class="form-control" name="customer['hood_cli']">
+                                            <input type="text" class="form-control" name="customer['hood_customer']">
                                         </div>
 
                                         <div class="form-group col-md-2">
                                             <label for="">CEP</label>
-                                            <input type="text" class="form-control" name="customer['zip_code_cli']">
+                                            <input type="text" class="form-control" name="customer['zip_code_customer']">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Município</label>
-                                            <input type="text" class="form-control" name="customer['city_cli']">
+                                            <input type="text" class="form-control" name="customer['city_customer']">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Estado</label>
-                                            <input type="text" class="form-control" name="customer['state_cli']">
+                                            <input type="text" class="form-control" name="customer['state_customer']">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -107,7 +96,7 @@ echo $customer;
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text"><i class="fas fa-phone-volume"></i></div>
                                                 </div>
-                                                <input type="text" class="form-control" name="customer['phone_cli']" onkeypress="$(this).mask('(00) 0000-0000')">
+                                                <input type="text" class="form-control" name="customer['phone_customer']" onkeypress="$(this).mask('(00) 0000-0000')">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-2">
@@ -116,7 +105,7 @@ echo $customer;
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text"><i class="fas fa-phone-volume"></i></div>
                                                 </div>
-                                                <input type="text" class="form-control" name="customer['workphone_cli']" onkeypress="$(this).mask('(00) 00000-0000')">
+                                                <input type="text" class="form-control" name="customer['workphone_customer']" onkeypress="$(this).mask('(00) 00000-0000')">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-2">
@@ -125,7 +114,7 @@ echo $customer;
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text"><i class="fas fa-mobile-alt"></i></div>
                                                 </div>
-                                                <input type="text" class="form-control" name="customer['mobile_cli']" onkeypress="$(this).mask('(00) 00000-0000')">
+                                                <input type="text" class="form-control" name="customer['mobile_customer']" onkeypress="$(this).mask('(00) 00000-0000')">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-3">
@@ -134,7 +123,7 @@ echo $customer;
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">@</div>
                                                 </div>
-                                                <input type="text" class="form-control" id="inlineFormInputGroupUsername2" name="customer['email_cli']">
+                                                <input type="text" class="form-control" id="inlineFormInputGroupUsername2" name="customer['email_customer']">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-2">
@@ -143,19 +132,19 @@ echo $customer;
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text"><i class="far fa-calendar"></i></div>
                                                 </div>
-                                                <input type="text" class="form-control" id="birthday" name="customer['birthdate_cli']">
+                                                <input type="text" class="form-control" id="birthday" name="customer['birthdate_customer']">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-1">
                                             <label for="">País</label>
-                                            <input id="birthday" type="text" class="form-control" name="customer['birthdate_cli']">
+                                            <input id="birthday" type="text" class="form-control" name="customer['country_customer']">
                                         </div>
                                     </div>
                                     <div class="line"></div>
                                     <div class="form-group row">
                                         <div class="col-sm-4 offset-sm-10">
-                                            <a href="report_cli.php" style="font-family: 'Bai Jamjuree'; font-size: 1em" class="btn btn-secondary" role="button">Cancel</a>
-                                            <button id="save" type="submit" style="font-family: 'Bai Jamjuree'; font-size: 1em" class="btn btn-primary" ><span
+                                            <a href="report_customer.php" style="font-family: 'Bai Jamjuree'; font-size: 1em" class="btn btn-secondary" role="button">Cancel</a>
+                                            <button id="btnAddCustomer" type="submit" style="font-family: 'Bai Jamjuree'; font-size: 1em" class="btn btn-primary" ><span
                                                         id="button"> Cadastrar</span></button>
                                         </div>
                                     </div>
@@ -165,5 +154,6 @@ echo $customer;
                 </div>
             </div>
     </section>
+<script src="js/input_customer.js"></script>
 
 <?php include(FOOTER_TEMPLATE); ?>
