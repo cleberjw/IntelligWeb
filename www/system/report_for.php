@@ -82,6 +82,5 @@
             </div>
         </div>
     </section>
-
-<?php require('modals/modal.php') ?>
 <?php include(FOOTER_TEMPLATE); ?>
+<?php require('modals/modal.php') ?>
