@@ -1,0 +1,43 @@
+version: '3'
+
+networks:
+  intellig-frontend:
+    driver: bridge
+    ipam: 
+      driver: default
+      config:
+        - subnet: 172.10.1.0/24
+  intellig-backend:
+    driver: bridge
+    ipam: 
+      driver: default
+      config:
+        - subnet: 172.10.2.0/23
+
+services:
+  intellig-db:
+    build: ./db
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    networks:
+      intellig-backend:
+        ipv4_address: 172.10.3.2
+    env_file:
+      - ./development.env
+  intellig-www:
+    build: ./www
+    volumes:
+      - ./www/:/var/www/html/
+    ports:
+      - "8100:80"
+    networks:
+      intellig-backend:
+        ipv4_address: 172.10.2.2
+      intellig-frontend:
+        ipv4_address: 172.10.1.2
+    env_file:
+      - ./development.env
+    depends_on:
+      - intellig-db
+      
