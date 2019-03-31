@@ -188,8 +188,8 @@ index();
 
                 <li><a href="#exampledropdownDropdown_cst" aria-expanded="false" data-toggle="collapse"> <i class="far fa-address-card"></i>Clientes </a>
                     <ul id="exampledropdownDropdown_cst" class="collapse list-unstyled ">
-                        <li><a href="input_cli.php"><ion-icon name="checkbox-outline"></ion-icon> Cadastrar</a></li>
-                        <li><a href="report_cli.php"><ion-icon name="checkbox-outline"></ion-icon> Relatório</a></li>
+                        <li><a href="input_customer.php"><ion-icon name="checkbox-outline"></ion-icon> Cadastrar</a></li>
+                        <li><a href="report_customer.php"><ion-icon name="checkbox-outline"></ion-icon> Relatório</a></li>
                         <!--                        <li><a href="#">Update</a></li>-->
                     </ul>
                 </li>

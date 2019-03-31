@@ -21,10 +21,10 @@ $conn = open_database();
 
 if($f_name_cli != NULL) {
     mysqli_query($conn,"INSERT INTO tbl_clients (f_name_cli,l_name_cli,email_cli,birth_cli,address_cli,zipcode_cli,city_cli,phone_cli,mobile_cli) VALUES ('$f_name_cli','$l_name_cli','$email_cli','$birth_cli','$address_cli','$zipcode_cli','$city_cli','$phone_cli','$mobile_cli')");
-    $url = '../report_cli.php';
+    $url = '../report_customer.php';
     echo'<META HTTP-EQUIV=Refresh CONTENT="0; URL='.$url.'">';
 } else {
-    $url = '../report_cli.php';
+    $url = '../report_customer.php';
     echo'<META HTTP-EQUIV=Refresh CONTENT="0; URL='.$url.'">';
 }
 

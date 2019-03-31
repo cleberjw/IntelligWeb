@@ -1,7 +1,7 @@
 <?php
 require_once('inc/functions.php');
 ob_start();
-edit_cli();
+edit_customer();
 
 ?>
 
@@ -42,7 +42,7 @@ edit_cli();
                                             href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
                             </div>
                         </div>
-                        <form action="edit_cli.php?id_cli=<?php echo $customer['id_cli']; ?>" method="POST">
+                        <form action="edit_customer.php?id_customer=<?php echo $customer['id_customer']; ?>" method="POST">
                             <div class="card-header d-flex align-items-center">
                                 <h3 class="h4" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.1em; font-size: 1em"><i style="font-size: 1.2em" class="fas fa-pen-square"></i> CLIENTES - MODO EDITAR</h3>
                             </div>
@@ -51,85 +51,85 @@ edit_cli();
                                     <div class="row">
                                         <div class="form-group col-md-1">
                                             <label for="name">ID Cliente</label>
-                                            <input type="text" class="form-control" name="customer['id_cli']" placeholder="000<?php echo $customer['id_cli'];?>" disabled>
+                                            <input type="text" class="form-control" name="customer['id_customer']" placeholder="000<?php echo $customer['id_customer'];?>" disabled>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label for="name">Nome / Razão Social</label>
-                                            <input type="text" class="form-control" name="customer['name_cli']" value="<?php echo $customer['name_cli']; ?>">
+                                            <input type="text" class="form-control" name="customer['name_customer']" value="<?php echo $customer['name_customer']; ?>">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">CNPJ / CPF</label>
-                                            <input id="cpfCnpj" type="text" class="form-control" name="customer['cpf_cnpj_cli']" value="<?php echo $customer['cpf_cnpj_cli']; ?>">
+                                            <input id="cpfCnpj" type="text" class="form-control" name="customer['cpf_cnpj_customer']" value="<?php echo $customer['cpf_cnpj_customer']; ?>">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">I.E</label>
-                                            <input type="text" class="form-control" name="customer['birthdate_cli']" value="<?php echo $customer['birthdate_cli']; ?>" maxlength="10">
+                                            <input type="text" class="form-control" name="customer['birthdate_customer']" value="<?php echo $customer['birthdate_customer']; ?>" maxlength="10">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Cadastro</label>
-                                            <input type="text" class="form-control" name="" value="<?php echo date('d-m-Y H:i:s', strtotime($customer['created_cli'])); ?>" disabled>
+                                            <input type="text" class="form-control" name="" value="<?php echo date('d-m-Y H:i:s', strtotime($customer['created_customer'])); ?>" disabled>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="campo3">Modificado</label>
-                                            <input type="text" class="form-control" name="customer['modified_cli']" value="<?php echo date('d-m-Y H:i:s', strtotime($customer['modified_cli'])); ?>" disabled>
+                                            <input type="text" class="form-control" name="customer['modified_customer']" value="<?php echo date('d-m-Y H:i:s', strtotime($customer['modified_customer'])); ?>" disabled>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label for="campo1">Endereço</label>
-                                            <input type="text" class="form-control" name="customer['address_cli']" value="<?php echo $customer['address_cli']; ?>">
+                                            <input type="text" class="form-control" name="customer['address_customer']" value="<?php echo $customer['address_customer']; ?>">
                                         </div>
 
                                         <div class="form-group col-md-2">
                                             <label for="campo2">Bairro</label>
-                                            <input type="text" class="form-control" name="customer['hood_cli']" value="<?php echo $customer['hood_cli']; ?>">
+                                            <input type="text" class="form-control" name="customer['hood_customer']" value="<?php echo $customer['hood_customer']; ?>">
                                         </div>
 
                                         <div class="form-group col-md-2">
                                             <label for="">CEP</label>
-                                            <input type="text" class="form-control" name="customer['zip_code_cli']" value="<?php echo $customer['zip_code_cli']; ?>">
+                                            <input type="text" class="form-control" name="customer['zip_code_customer']" value="<?php echo $customer['zip_code_customer']; ?>">
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="">Município</label>
-                                            <input type="text" class="form-control" name="customer['city_cli']" value="<?php echo $customer['city_cli']; ?>">
+                                            <input type="text" class="form-control" name="customer['city_customer']" value="<?php echo $customer['city_customer']; ?>">
                                         </div>
                                         <div class="form-group col-md-1">
                                             <label for="">UF</label>
-                                            <input type="text" class="form-control" name="customer['state_cli']" value="<?php echo $customer['state_cli']; ?>">
+                                            <input type="text" class="form-control" name="customer['state_customer']" value="<?php echo $customer['state_customer']; ?>">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-2">
                                             <label for="">Tel. Residencial</label>
-                                            <input type="text" class="form-control" name="customer['phone_cli']" value="<?php echo $customer['phone_cli']; ?>" onkeypress="$(this).mask('(00) 0000-0000')">
+                                            <input type="text" class="form-control" name="customer['phone_customer']" value="<?php echo $customer['phone_customer']; ?>" onkeypress="$(this).mask('(00) 0000-0000')">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Tel. Comercial</label>
-                                            <input type="text" class="form-control" name="customer['workphone_cli']" value="<?php echo $customer['workphone_cli']; ?>" onkeypress="$(this).mask('(00) 00000-0000')">
+                                            <input type="text" class="form-control" name="customer['workphone_customer']" value="<?php echo $customer['workphone_customer']; ?>" onkeypress="$(this).mask('(00) 00000-0000')">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Tel. Celular</label>
-                                            <input type="text" class="form-control" name="customer['mobile_cli']" value="<?php echo $customer['mobile_cli']; ?>" onkeypress="$(this).mask('(00) 00000-0000')">
+                                            <input type="text" class="form-control" name="customer['mobile_customer']" value="<?php echo $customer['mobile_customer']; ?>" onkeypress="$(this).mask('(00) 00000-0000')">
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="">E-mail</label>
-                                            <input type="email" class="form-control" name="customer['email_cli']" value="<?php echo $customer['email_cli']; ?>">
+                                            <input type="email" class="form-control" name="customer['email_customer']" value="<?php echo $customer['email_customer']; ?>">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="">Dt. Nascimento</label>
-                                            <input type="text" class="form-control" name="customer['birthdate_cli']" value="<?php echo $customer['birthdate_cli']; ?>">
+                                            <input type="text" class="form-control" name="customer['birthdate_customer']" value="<?php echo $customer['birthdate_customer']; ?>">
                                         </div>
                                         <div class="form-group col-md-1">
                                             <label for="">País</label>
-                                            <input type="text" class="form-control" name="customer['country_cli']" maxlength="2" value="<?php echo $customer['country_cli']; ?>">
+                                            <input type="text" class="form-control" name="customer['country_customer']" maxlength="2" value="<?php echo $customer['country_customer']; ?>">
                                         </div>
                                     </div>
                                     <div class="line"></div>
                                     <div class="form-group row">
                                         <div class="col-sm-4 offset-sm-3">
-                                            <a href="report_cli.php" class="btn btn-secondary" role="button">Cancel</a>
+                                            <a href="report_customer.php" class="btn btn-secondary" role="button">Cancel</a>
                                             <button id="save" type="submit" class="btn btn-secondary" ><span
                                                         id="button"> Atualizar</span></button>
                                         </div>

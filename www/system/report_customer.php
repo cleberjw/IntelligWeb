@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <div class="table-responsive" >
                                 <div style="width:98%">
-                                    <table  id="report_cli" style="width: 100%;" class="table" >
+                                    <table  id="report_customer" style="width: 100%;" class="table" >
                                         <thead >
                                         <tr>
                                             <th><ion-icon size="large" name="menu"></ion-icon></th>
@@ -52,17 +52,17 @@
                                         <?php if ($customers) : ?>
                                             <?php foreach ($customers as $customer) : ?>
                                                 <tr>
-                                                    <th style="vertical-align: middle" scope="row">000<?php echo $customer['id_cli']; ?></th>
-                                                    <td style="vertical-align: middle"><?php echo $customer['name_cli']; ?></td>
-                                                    <td style="vertical-align: middle"><?php echo $customer['address_cli']; ?></td>
-                                                    <td style="vertical-align: middle"><?php echo $customer['hood_cli']; ?></td>
-                                                    <td style="vertical-align: middle"><?php echo $customer['city_cli']; ?></td>
-                                                    <td style="vertical-align: middle;"><?php echo $customer['mobile_cli']; ?></td>
-                                                    <td style="vertical-align: middle"><?php echo $customer['email_cli']; ?></td>
+                                                    <th style="vertical-align: middle" scope="row">000<?php echo $customer['id_customer']; ?></th>
+                                                    <td style="vertical-align: middle"><?php echo $customer['name_customer']; ?></td>
+                                                    <td style="vertical-align: middle"><?php echo $customer['address_customer']; ?></td>
+                                                    <td style="vertical-align: middle"><?php echo $customer['hood_customer']; ?></td>
+                                                    <td style="vertical-align: middle"><?php echo $customer['city_customer']; ?></td>
+                                                    <td style="vertical-align: middle;"><?php echo $customer['mobile_customer']; ?></td>
+                                                    <td style="vertical-align: middle"><?php echo $customer['email_customer']; ?></td>
                                                     <td style="vertical-align: middle" class="action">
                                                         <div>
-                                                            <a id="btn-edit" href="edit_cli.php?id_cli=<?php echo $customer['id_cli']; ?>" class="btn btn-warning btn-sm"><i class="material-icons md-18">insert_comment</i></a>
-                                                            <a id="btn-trash" href="#" data-toggle="modal" data-target="#delete-modal-cli" data-customer="<?php echo $customer['id_cli']; ?>" class="btn btn-danger btn-sm tooltiptext" value="disable" alt="Disable" ><i class="material-icons md-18">person_add_disabled</i></a>
+                                                            <a id="btn-edit" href="edit_customer.php?id_customer=<?php echo $customer['id_customer']; ?>" class="btn btn-warning btn-sm"><i class="material-icons md-18">insert_comment</i></a>
+                                                            <a id="btn-trash" href="#" data-toggle="modal" data-target="#delete-modal-cli" data-customer="<?php echo $customer['id_customer']; ?>" class="btn btn-danger btn-sm tooltiptext" value="disable" alt="Disable" ><i class="material-icons md-18">person_add_disabled</i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
