@@ -1,5 +1,5 @@
-    <?php require_once 'config.php'; ?>
-    <?php include(HEADER_TEMPLATE); ?>
+<?php require_once('config.php');?>
+<?php include(HEADER_TEMPLATE); ?>
         <div class="content-inner">
         <!-- Page Header-->
         <header class="page-header">
@@ -105,6 +105,7 @@
                                                 </tr>
                                             <?php endif; ?>
                                             </tbody>
+                                        <?php endif; ?>
                                         </table>
                                     </div>
                                 </div>
@@ -114,6 +115,7 @@
                 </div>
             </div>
         </section>
-        <?php include(FOOTER_TEMPLATE); ?>
         <?php require('modals/modal.php') ?>
+        
+        <?php include(FOOTER_TEMPLATE); ?>
     
