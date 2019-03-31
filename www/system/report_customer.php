@@ -29,16 +29,6 @@
                                     <div aria-labelledby="closeCard3" class="dropdown-menu dropdown-menu-right has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
                                 </div>
                             </div>
-<<<<<<< HEAD:www/system/report_cli.php
-                            <div class="card-header d-flex align-items-center">
-                                <h3 class="h4" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.1em; font-size: 1em"><i style="font-size: 1.2em" class="fas fa-pen-square"></i> RELATÓRIO</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive" >
-                                    <div style="width:98%">
-                                        <table  id="report_cli" style="width: 100%;" class="table" >
-                                            <thead >
-=======
                         </div>
                         <div class="card-header d-flex align-items-center">
                             <h3 class="h4" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.1em; font-size: 1em"><i style="font-size: 1.2em" class="fas fa-pen-square"></i> RELATÓRIO</h3>
@@ -79,7 +69,6 @@
                                                 </tr>
                                             <?php endforeach; ?>
                                         <?php else : ?>
->>>>>>> Testando-com-jquery-validate-e-renomeando-tabela-cli-para-customer-mas-nao-esta-inserindo-:www/system/report_customer.php
                                             <tr>
                                                 <th><ion-icon size="large" name="menu"></ion-icon></th>
                                                 <th>NOME</th>
