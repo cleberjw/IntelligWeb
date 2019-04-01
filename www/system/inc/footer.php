@@ -24,11 +24,10 @@
 <script src="vendor/popper.js/umd/popper.min.js"> </script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="vendor/chart.js/Chart.min.js"></script>
 <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
 <script src="vendor/jquery-ui/jquery-ui.min.js"></script>
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-<script src="js/charts-home.js" type="text/javascript"></script>
+
 
 <!-- Main File-->
 <!-- Data Tables-->

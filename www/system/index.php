@@ -581,4 +581,8 @@
         </div>
     </section>
 
+<!-- Arquivo Javascript utilizado para os charts index -->
+<script src="vendor/chart.js/Chart.min.js"></script>
+<script src="js/charts-home.js" type="text/javascript"></script>
+
 <?php include(FOOTER_TEMPLATE); ?>
