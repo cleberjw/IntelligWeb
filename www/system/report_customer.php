@@ -67,45 +67,13 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                            <?php endforeach; ?>
+                                            <?php endforeach; ?>    
                                         <?php else : ?>
                                             <tr>
-                                                <th><ion-icon size="large" name="menu"></ion-icon></th>
-                                                <th>NOME</th>
-                                                <th>ENDEREÇO</th>
-                                                <th>BAIRRO</th>
-                                                <th>CIDADE</th>
-                                                <th>CELULAR</th>
-                                                <th>E-MAIL</th>
-                                                <th></th>
+                                                <td colspan="12">Nenhum registro encontrado.</td>
                                             </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php if ($customers) : ?>
-                                                <?php foreach ($customers as $customer) : ?>
-                                                    <tr>
-                                                        <th style="vertical-align: middle" scope="row">000<?php echo $customer['id_cli']; ?></th>
-                                                        <td style="vertical-align: middle"><?php echo $customer['name_cli']; ?></td>
-                                                        <td style="vertical-align: middle"><?php echo $customer['address_cli']; ?></td>
-                                                        <td style="vertical-align: middle"><?php echo $customer['hood_cli']; ?></td>
-                                                        <td style="vertical-align: middle"><?php echo $customer['city_cli']; ?></td>
-                                                        <td style="vertical-align: middle;"><?php echo $customer['mobile_cli']; ?></td>
-                                                        <td style="vertical-align: middle"><?php echo $customer['email_cli']; ?></td>
-                                                        <td style="vertical-align: middle" class="action">
-                                                            <div>
-                                                                <a id="btn-edit" href="edit_cli.php?id_cli=<?php echo $customer['id_cli']; ?>" class="btn btn-warning btn-sm"><i class="material-icons md-18">insert_comment</i></a>
-                                                                <a id="btn-trash" href="#" data-toggle="modal" data-target="#delete-modal-cli" data-customer="<?php echo $customer['id_cli']; ?>" class="btn btn-danger btn-sm tooltiptext" value="disable" alt="Disable" ><i class="material-icons md-18">person_add_disabled</i></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
-                                            <?php else : ?>
-                                                <tr>
-                                                    <td colspan="12">Nenhum registro encontrado.</td>
-                                                </tr>
-                                            <?php endif; ?>
-                                            </tbody>
                                         <?php endif; ?>
+                                        </tbody>
                                         </table>
                                     </div>
                                 </div>
