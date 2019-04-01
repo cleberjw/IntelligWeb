@@ -117,5 +117,6 @@
         </section>
         <?php require('modals/modal.php') ?>
         
+        <script src="js/input_customer.js"></script>
         <?php include(FOOTER_TEMPLATE); ?>
     
