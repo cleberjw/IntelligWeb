@@ -224,8 +224,8 @@ index();
                 </li><li><a href="#exampledropdownDropdown_pjt" aria-expanded="false" data-toggle="collapse"> <i class="icon-padnote"></i>Comercial </a>
                     <ul id="exampledropdownDropdown_pjt" class="collapse list-unstyled ">
                         <li><a href="input_orc.php"><ion-icon name="checkbox-outline"></ion-icon> Orçamento</a></li>
-                        <li><a href="report_orc.php"><ion-icon name="checkbox-outline"></ion-icon> Venda</a></li>
-                        <li><a href="report_orc.php"><ion-icon name="checkbox-outline"></ion-icon> Produção</a></li>
+                        <li><a href=""><ion-icon name="checkbox-outline"></ion-icon> Venda</a></li>
+                        <li><a href=""><ion-icon name="checkbox-outline"></ion-icon> Produção</a></li>
                         <!--                        <li><a href="#">Update</a></li>-->
                     </ul>
                 </li>

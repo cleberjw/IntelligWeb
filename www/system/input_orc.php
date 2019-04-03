@@ -105,7 +105,7 @@
                                             </tr>
                                             </thead>
                                             <tbody id="campos">
-<!--                                            --><?php //$codprod = $_POST['produto']; echo find_prd($codprod)?>
+
                                             </tbody>
                                         </table>
                                     </div>
