@@ -35,6 +35,7 @@ $("#inclui").click(function(e) {
     var prodSelected = $('#descprod').find('option:selected');
     var codProduto = prodSelected.attr('cod');
     var valor = prodSelected.attr('valor');
+    
 
     var qtdprod = $('#qtdprod').val();
     if (qtdprod == "" ) {
@@ -55,6 +56,7 @@ $("#inclui").click(function(e) {
         let qtdProduto = +arrProd[idx].quantidade;
         arrProd[idx].quantidade = qtdProduto + +qtdprod;
     }
+
     $("#campos").html("");
     _.forEach(arrProd, (prod) =>{
         var select =  '<tr>';
@@ -62,7 +64,7 @@ $("#inclui").click(function(e) {
         select += '<th style="vertical-align: middle" scope="row">' + prod.descProduto + '</th>';
         select += '<th style="vertical-align: middle; text-align: center">' + prod.quantidade + '</th>';
         select += '<th style="vertical-align: middle; text-align: center">' + prod.valor + '</th>';
-        select += '<th style="vertical-align: middle; text-align: center">' + prod.valor + '</th>';
+        select += '<th style="vertical-align: middle; text-align: center">' + (prod.valor * prod.quantidade).toLocaleString('pt-br', {minimumFractionDigits: 2}) + '</th>';
         select += '<th>';
         select += '<a style="font-family: \'Bai Jamjuree\'" id="btn-edit" href="" class="btn btn-warning btn-sm"><i class="material-icons md-18">cached</i></a>';
         select += '<a style="font-family: \'Bai Jamjuree\'" id="btn-trash" href="#" data-toggle="modal" data-target="#delete-modal" data-customer="" class="btn btn-danger btn-sm tooltiptext" value="disable" alt="Disable" ><i class="material-icons md-18">delete_outline</i></a>';
