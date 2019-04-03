@@ -78,7 +78,7 @@
                                 mysqli_set_charset($conn, "utf8");
                                 $sql_client = mysqli_query($conn, "select distinct * from tbl_products"); ?>
                                 <?php while ($consult = mysqli_fetch_array($sql_client)) : ?>
-                                    <option value="<?php echo $consult[1]?>" cod="<?php echo $consult[0]?>" valor="<?php echo $consult[7]?>"><?php echo $consult[1]?></option>
+                                    <option value="<?php echo $consult['desc_prd']?>" cod="<?php echo $consult['id_prd']?>" valor="<?php echo $consult['value_prd']?>"><?php echo $consult['desc_prd']?></option>
                                 <?php endwhile; ?>
                             </select></br>
                         </div>
