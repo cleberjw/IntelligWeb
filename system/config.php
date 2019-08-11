@@ -1,13 +1,13 @@
 <?php
 /** O nome do banco de dados*/
-//define('DB_NAME', 'id7497666_db_crud');
-define('DB_NAME', 'intell89_db_intellig');
+define('DB_NAME', 'id7497666_db_crud');
+// define('DB_NAME', 'intell20_db_intellig');
 /** Usuário do banco de dados MySQL */
-//define('DB_USER', 'root');
-define('DB_USER', 'intell89_admin');
+define('DB_USER', 'root');
+// define('DB_USER', 'intell20_admin');
 /** Senha do banco de dados MySQL */
-//define('DB_PASSWORD', '');
-define('DB_PASSWORD', 'B5d53e9aeF');
+define('DB_PASSWORD', '');
+// define('DB_PASSWORD', 'B5d53e9aeF');
 /** nome do host do MySQL */
 define('DB_HOST', 'localhost');
 /** caminho absoluto para a pasta do sistema **/

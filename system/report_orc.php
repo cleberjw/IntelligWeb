@@ -48,18 +48,18 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php if ($orders) : ?>
-                                            <?php foreach ($orders as $order) : ?>
+                                        <?php if ($budgets) : ?>
+                                            <?php foreach ($budgets as $buget) : ?>
                                                 <tr>
-                                                    <th style="vertical-align: middle" scope="row">000<?php echo $order['id_ord']; ?></th>
-                                                    <td style="vertical-align: middle"><?php echo $order['name_cli_ord']; ?></td>
+                                                    <th style="vertical-align: middle" scope="row">000<?php echo $buget['id_ord']; ?></th>
+                                                    <td style="vertical-align: middle"><?php echo $buget['name_cli_ord']; ?></td>
                                                     <td style="vertical-align: middle"></td>
-                                                    <td style="vertical-align: middle"><?php echo date('d-m-Y H:i:s', strtotime($order['created_ord'])); ?></td>
-                                                    <td style="vertical-align: middle"><?php echo $order['status_ord']; ?></td>
+                                                    <td style="vertical-align: middle"><?php echo date('d-m-Y H:i:s', strtotime($buget['created_ord'])); ?></td>
+                                                    <td style="vertical-align: middle"><?php echo $buget['status_ord']; ?></td>
                                                     <td style="vertical-align: middle" class="action">
                                                         <div>
-                                                            <a id="btn-edit" href="edit_cli.php?id_cli=<?php echo $orders['id_cli']; ?>" class="btn btn-warning btn-sm"><i class="material-icons md-18">insert_comment</i></a>
-                                                            <a id="btn-trash" href="#" data-toggle="modal" data-target="#delete-modal-cli" data-customer="<?php echo $orders['id_cli']; ?>" class="btn btn-danger btn-sm tooltiptext" value="disable" alt="Disable" ><i class="material-icons md-18">person_add_disabled</i></a>
+                                                            <a id="btn-edit" href="edit_cli.php?id_ord=<?php echo $buget['id_ord']; ?>" class="btn btn-warning btn-sm"><i class="material-icons md-18">insert_comment</i></a>
+                                                            <a id="btn-trash" href="#" data-toggle="modal" data-target="#delete-modal-cli" data-customer="<?php echo $buget['id_ord']; ?>" class="btn btn-danger btn-sm tooltiptext" value="disable" alt="Disable" ><i class="material-icons md-18">person_add_disabled</i></a>
                                                         </div>
                                                     </td>
                                                 </tr>

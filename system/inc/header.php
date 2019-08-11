@@ -200,7 +200,6 @@ index();
                 <li><a href="#exampledropdownDropdown_prod" aria-expanded="false" data-toggle="collapse"> <i class="fas fa-box"></i>Estoque </a>
                     <ul id="exampledropdownDropdown_prod" class="collapse list-unstyled ">
                         <li><a href="input_prd.php"><ion-icon name="checkbox-outline"></ion-icon> Produtos</a></li>
-                        <li><a href="input_set.php"><ion-icon name="checkbox-outline"></ion-icon> Set Boats</a></li>
                         <li><a href="report_prd.php"><ion-icon name="checkbox-outline"></ion-icon> Relatório</a></li>
                     </ul>
                 </li>

@@ -51,7 +51,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-2">
                                         <label for="name" style="font-family: 'Bai Jamjuree'">N. Orçamento</label>
-                                        <input type="text" style="font-family: 'Bai Jamjuree'" class="form-control" name="order['id_ord']" placeholder="000<?php echo last() + 1 ?>" disabled>
+                                        <input type="text" style="font-family: 'Bai Jamjuree'" class="form-control" name="budget['id_bud']" placeholder="000<?php echo last() + 1 ?>" disabled>
                                     </div>
                                     <div  class="form-group col-md-10">
                                         <div id="total" class="card-body" style="text-align:center;float:right">

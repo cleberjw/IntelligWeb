@@ -76,7 +76,7 @@ add_cat();
                                                     <option value="" selected></option>
                                                     <?php $conn = open_database();
                                                     mysqli_set_charset($conn, "utf8");
-                                                    $sql_cat = mysqli_query($conn, "select distinct * from tbl_category"); ?>
+                                                    $sql_cat = mysqli_query($conn, "select distinct * from tbl_categories"); ?>
                                                     <?php while ($consult = mysqli_fetch_array($sql_cat)) : ?>
                                                         <option><?php echo $consult[1]?></option>
                                                     <?php endwhile; ?>

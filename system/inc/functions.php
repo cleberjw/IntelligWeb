@@ -13,6 +13,27 @@ $user = null;
 $expenses = null;
 $expense = null;
 
+$categories = null;
+$category = null;
+
+$products = null;
+$product = null;
+
+$manufactures = null;
+$manufacturer = null;
+
+$providers = null;
+$provider = null;
+
+$holidays = null;
+$holiday = null;
+
+$orders = null;
+$order = null;
+
+$budgets = null;
+$budget = null;
+
 /**
  *  Variáveis Globais
  */
@@ -26,16 +47,20 @@ function index() {
     global $providers;
     global $holidays;
     global $orders;
+    global $budgets;
 
+    
+    $budgets = find_all('tbl_budgets');
+    $categories = find_all('tbl_categories');
     $customers = find_all('tbl_customers');
-    $users = find_all('tbl_users');
     $expenses = find_all('tbl_expenses');
-    $categories = find_all('tbl_category');
-    $products = find_all('tbl_products');
-    $manufactures = find_all('tbl_manufacturer');
-    $providers = find_all('tbl_providers');
     $holidays = find_all('tbl_holidays');
+    $manufactures = find_all('tbl_manufacturer');
     $orders = find_all('tbl_orders');
+    $products = find_all('tbl_products');
+    $providers = find_all('tbl_providers');
+    $users = find_all('tbl_users');
+    
 }
 
 /**
@@ -90,7 +115,7 @@ function add_cat() {
         $category['modified_cat'] = $category['created_cat'] = $today->format("Y-m-d H:i:s");
 
 
-        save('tbl_category', $category);
+        save('tbl_categories', $category);
     }
 }
 
@@ -159,6 +184,19 @@ function add_ord() {
         $order['modified_ord'] = $order['created_ord'] = $today->format("Y-m-d H:i:s");
 
         save('tbl_orders', $order);
+        header('location: report_orc.php');
+    }
+}
+
+function add_bud() {
+
+    if (isset($_POST['budget'])) {
+        $today = date_create('now', new DateTimeZone('America/Sao_Paulo'));
+
+        $order = $_POST['budget'];
+        $order['modified_bud'] = $order['created_bud'] = $today->format("Y-m-d H:i:s");
+
+        save('tbl_budgets', $order);
         header('location: report_orc.php');
     }
 }
@@ -250,14 +288,16 @@ function find( $table = null, $id = null ) {
         if ($id) {
             if (isset($_GET['id_cli'])) {
                 $field = 'id_cli';
-            } elseif (isset($_GET['id_exp'])) {
-                $field = 'id_exp';
-            } elseif (isset($_GET['id_prd'])) {
-                $field = 'id_prd';
             } elseif (isset($_GET['id_pvd'])) {
                 $field = 'id_pvd';
-            } elseif (isset($_GET['id_pvd'])) {
+            } elseif (isset($_GET['id_prd'])) {
+                $field = 'id_prd';
+            } elseif (isset($_GET['id_exp'])) {
+                $field = 'id_exp';
+            }  elseif (isset($_GET['id_ord'])) {
                 $field = 'id_ord';
+            } elseif (isset($_GET['id_bud'])) {
+                $field = 'id_bud';
             }
 
             $sql = "SELECT * FROM " . $table . " WHERE ". $field ." = ".$id;
@@ -272,9 +312,11 @@ function find( $table = null, $id = null ) {
             $sql = "SELECT * FROM " . $table;
             $result = $database->query($sql);
 
-            if ($result->num_rows > 0) {
-                $found = $result->fetch_all(MYSQLI_ASSOC);
+            $registros = array();
+            while($row = $result->fetch_assoc()){
+            $registros[] = $row;
             }
+
         }
     } catch (Exception $e) {
         $_SESSION['message'] = $e->GetMessage();
@@ -339,7 +381,7 @@ function last() {
  */
 function last_cat() {
     $database = open_database();
-    $table = 'tbl_category';
+    $table = 'tbl_categories';
 
     $all_cat = mysqli_query($database,"SELECT MAX(id_cat) FROM " . $table);
     $result_last = mysqli_fetch_array($all_cat);
@@ -603,6 +645,34 @@ function edit_pvd() {
         }
     } else {
         header('location: report_for.php');
+    }
+}
+
+/**
+ *	Atualizacao/Edicao de Orçamentos
+ */
+function edit_orc() {
+
+    $now = date_create('now', new DateTimeZone('America/Sao_Paulo'));
+
+    if (isset($_GET['id_bud'])) {
+
+        $id = $_GET['id_bud'];
+
+        if (isset($_POST['budget'])) {
+
+            $provider = $_POST['budget'];
+            $provider['modified_bud'] = $now->format("Y-m-d H:i:s");
+
+            update_pvd('tbl_budgets', $id, $provider);
+            header('location: report_orc.php');
+        } else {
+
+            global $provider;
+            $provider = find('tbl_budgets', $id);
+        }
+    } else {
+        header('location: report_orc.php');
     }
 }
 
